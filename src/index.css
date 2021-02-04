@@ -7,14 +7,14 @@ body{
   font-family:'montseratt',sans-serif;
 }
 .App{
-  background-image: url("./main/cold-bg.jpg");
+  background-image: url("./main/aiden-craver-g1F8LNK1pUM-unsplash.jpg");
   background-size: cover;
-  background-position: bottom;
+  /* background-position: bottom; */
   transition: 0.4s ease-out;
 }
 
 .app-warm{
-  background-image: url("./main/warm-bg.jpg");
+  background-image: url("./main/simon-migaj-Yui5vfKHuzs-unsplash.jpg");
   background-size: cover;
   background-position: bottom;
   transition: 0.4s ease-out;
@@ -37,9 +37,19 @@ body{
   /* background-position: bottom; */
   transition: 0.4s ease-out;
 }
+.normal{
+  background-image: url("./main/pexels-rachel-claire-4846496.jpg");
+  background-size: cover;
+}
+.clouds{
+  background-image: url("./main/pexels-brett-sayles-2097628.jpg");
+  background-size: cover;
+  background-position: center;
+
+}
  main{
   min-height: 100vh;
-  background-image: linear-gradient(to bottom,rgba(0,0,0,0.2),rgba(0,0,0,0.75));
+  /* background-image: linear-gradient(to bottom,rgba(0,0,0,0.2),rgba(0,0,0,0.75)); */
   padding:25px;
 }
 .search-box{

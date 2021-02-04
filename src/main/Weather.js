@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 
 const api={
     key:"a6227440aac1d776763b27265c282b30",
@@ -16,10 +16,18 @@ function Weather (){
             .then(result=>{
                 setQuery('');
                 setWeather(result);
-                console.log(result);
-            });
+                // console.log(result);
+            })            
+            // console.log(weather.main);
         }
     }    
+
+    // useEffect(()=>{
+        // if(typeof weather.main=="undefined")
+        // {
+        //     alert("Your entered wrong location!!!")
+        // }
+    // })
 
      const dateHandler=(d)=>{
         const months=['January','February','March','April','May','June','July','August','September','October','November','December'];
@@ -32,14 +40,38 @@ function Weather (){
 
         return `${date}, ${day}, ${month} ${year}`;
     }
+    const backgroundImageHandler=()=>{
+            if(typeof weather.main!="undefined")
+                {
+                    if(weather.weather[0].main==="Rain")
+                    {
+                        return "app-rain"
+                    }
+                    else if(weather.weather[0].main==="Clouds")
+                    {
+                        return "clouds";
+                    }
+                    else
+                    {
+                        if(weather.main.temp>16)
+                            return "app-warm"
+                        else
+                            return "App"
+                    }
+
+                }
+            else
+                return "normal" 
+        
+    }
  
         return (
            <React.Fragment>
-              <div className={(typeof weather.main!="undefined")?(weather.weather[0].main=="Rain")?"app-rain":(weather.main.temp>16)?"app-warm":"App":"App"}>
-            {/* <div className="app-cold-night"> */}
+              <div className={backgroundImageHandler()}>
+            {/* <div className="App"> */}
                 <main>
                    <div className="search-box">
-                       <input type="text" className="search-bar" placeholder="Search..." onChange={e=>setQuery(
+                       <input type="text" className="search-bar" placeholder="Search your city..." onChange={e=>setQuery(
                            e.target.value)} value={query} onKeyPress={search}/>
                    </div>
                    {typeof weather.main!="undefined"?(
@@ -53,7 +85,7 @@ function Weather (){
                        <div className="weather">{weather.weather[0].main}</div>
                    </div>                       
                     </div>
-                        ):('')};
+                        ):('')}
                </main>
 
             </div>
